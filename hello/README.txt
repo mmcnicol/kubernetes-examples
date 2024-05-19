@@ -1,10 +1,11 @@
 
 
-cd C:\Data\github\kubernetes-examples\hello
+cd C:\Data\github\kubernetes-examples
 
 kubectl apply -f .\hello
 
 
+cd C:\Data\github\kubernetes-examples\hello
 
 kubectl apply -f hello-job.yaml
 
