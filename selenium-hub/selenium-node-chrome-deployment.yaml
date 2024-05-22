@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-node-chrome
+  labels:
+    app: selenium-node
+    role: chrome
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: selenium-node
+      role: chrome
+  template:
+    metadata:
+      labels:
+        app: selenium-node
+        role: chrome
+    spec:
+      containers:
+      - name: selenium-node-chrome
+        image: selenium/node-chrome:latest
+        ports:
+        - containerPort: 5555
+        env:
+        - name: HUB_HOST
+          value: selenium-hub
+        - name: HUB_PORT
+          value: "4444"
+        - name: NODE_MAX_INSTANCES
+          value: "1"
+        - name: NODE_MAX_SESSION
+          value: "1"
